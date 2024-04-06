@@ -1,0 +1,11 @@
+{
+	"Name": "More Minecarts",
+	"Author": "Pagofr",
+	"Version": "1.0",
+	"Description": "Adds minecart locations to the ones in Extended Minecarts mod",
+	"UniqueID": "pagofr.minecarts",
+	"UpdateKeys": ["Nexus:21859"],
+	"ContentPackFor": {
+		"UniqueID": "Pathoschild.ContentPatcher"
+	}
+}
