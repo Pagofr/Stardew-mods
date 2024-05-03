@@ -1,6 +1,7 @@
 {
+    "$schema": "https://smapi.io/schemas/content-patcher.json",
     "Format": "2.0.0",
-	"configSchema": {
+	"ConfigSchema": {
 		"Enable Farm Minecart": {
 			"AllowValues": "true, false",
 			"Default": true,
@@ -59,7 +60,12 @@
 			"Description": "Y Coordinate for override",
             "Section": "Farm Location Override",
 		},
-
+        "Custom Farm Map Name": {
+			"Default": "",
+            "AllowBlank": true,
+			"Description": "ADVANCED OPTION! Enter a custom Farm map file here. Leave blank if unsure",
+            "Section": "Farm Location Override",
+        }
 	},
 
     "DynamicTokens":[
@@ -103,11 +109,19 @@
 			"Value":"Farm_Ranching",
 			"When":{"FarmType":"MeadowlandsFarm"}
 		},
-		{
+        {
 			"Name":"ActiveFarmMap",
 			"Value":"{{FarmType}}",
 			"When":{
-                "Query: '{{FarmType}}' NOT IN ('Standard', 'Riverland', 'Forest', 'Hilltop', 'Wilderness', 'FourCorners', 'Beach', 'MeadowlandsFarm')": true
+                "Query: '{{FarmType}}' NOT IN ('Standard', 'Riverland', 'Forest', 'Hilltop', 'Wilderness', 'FourCorners', 'Beach', 'MeadowlandsFarm')": true,
+                "Query: '{{Custom Farm Map Name}}'=''": true,
+            }
+		},
+        {
+			"Name":"ActiveFarmMap",
+			"Value":"{{Custom Farm Map Name}}",
+			"When":{
+                "Query: '{{Custom Farm Map Name}}'=''": false,
             }
 		},
     ],
